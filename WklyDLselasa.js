@@ -4,78 +4,119 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-//masukan nama user pengguna
+Kmenu = [
+  { minuman: "Kopi Hear", harga: 31000 },
+  { minuman: "Cafe Latte", harga: 38000 },
+  { minuman: "Cappuccino", harga: 31000 },
+  { minuman: "Espresso", harga: 20000 },
+  { minuman: "Americano", harga: 25000 },
+  { minuman: "Signature V60", harga: 40000 },
+  { minuman: "Vietnam Drip", harga: 30000 },
+  { minuman: "Espresso BOOM~!", harga: 50000 },
+  { minuman: "Kopi Gula Aren", harga: 48000 },
+  { minuman: "Machiato", harga: 48000 },
+];
+
+let Mminuman = [];
+
 rl.question("Masukan Nama Anda : ", function (nama) {
+  //menampilkan menu dengan nama yang sedang memesan
   console.log(`\nHai ${nama}, Selamat Datang di Hear Coffee ☕︎ྀི`);
-  console.log("-------------------------------------------");
-  //menampilkan menu
-  console.log("Aneka Kopi :  ✎﹏﹏﹏﹏☕︎ᝰ.ᐟ");
-  console.log("-------------------------------------------");
-  console.log("1. | Kopi Hear");
-  console.log("2. | Cafe Latte");
-  console.log("3. | Cappuccino");
-  console.log("4. | Espresso");
-  console.log("5. | Americano");
-  console.log("6. | Signature V60");
-  console.log("7. | Vietnam Drip");
-  console.log("8. | Espresso BOOM~!");
-  console.log("9. | Kopi Gula Aren");
-  console.log("10.| Machiato");
-  console.log("-------------------------------------------");
-  rl.question("Masukan Nomor Menu yang Ingin Dipesan : ", function (checkOut) {
-    const user = nama;
-    let CO = checkOut;
-    if (isNaN(CO)) {
-      console.log("Input tidak valid. Silakan masukkan nomor menu yang benar.");
-      rl.close();
-      return;
-    } else {
+  console.log("---------------------------------------------");
+  console.log("Aneka Kopi :✎﹏﹏ Hear | Caffee (っ-,-)つ☕ ﹏");
+  console.log("---------------------------------------------");
+  for (let i = 0; i < Kmenu.length; i++) {
+    Mminuman.push(
+      `   | ${i + 1}. ${Kmenu[i].minuman} - Rp. ${Kmenu[i].harga} ☕︎.ᐟ\n`,
+    );
+    console.log("---------------------------------------------");
+    console.log(Mminuman[i]);
+    console.log("---------------------------------------------");
+  }
+  rl.question(
+    "Masukan sesuai nomor menu yg ingin di pesan : ",
+    function (checkOut) {
+      if (isNaN(checkOut) || checkOut < 1 || checkOut > Kmenu.length) {
+        console.log("Input sesuai nomor menu..!");
+        return checkOut();
+      }
+      const CO = [];
       switch (checkOut) {
         case "1":
-          CO = "1. Kopi Hear";
-          console.log("Anda telah memesan Kopi Hear");
-          break;
-        case "2":
-          CO = "2. Cafe Latte";
-          console.log("Anda telah memesan Cafe Latte");
-          break;
-        case "3":
-          CO = "3. Cappuccino";
-          console.log("Anda telah memesan Cappuccino");
-          break;
-        case "4":
-          CO = "4. Espresso";
-          console.log("Anda telah memesan Espresso");
-          break;
-        case "5":
-          CO = "5. Americano";
-          console.log("Anda telah memesan Americano");
-          break;
-        case "6":
-          CO = "6. Signature V60";
-          console.log("Anda telah memesan Signature V60");
-          break;
-        case "7":
-          CO = "7. Vietnam Drip";
-          console.log("Anda telah memesan Vietnam Drip");
-          break;
-        case "8":
-          CO = "8. Espresso BOOM~!";
-          console.log("Anda telah memesan Espresso BOOM~!");
-          break;
-        case "9":
-          CO = "9. Kopi Gula Aren";
-          console.log("Anda telah memesan Kopi Gula Aren");
-          break;
-        case "10":
-          CO = "10. Machiato";
-          console.log("Anda telah memesan Machiato");
-          break;
-        default:
-          console.log("Menu tidak valid");
-
-          rl.close();
+          CO.push(`1. ${Kmenu[0].minuman} | Rp. ${Kmenu[0].harga}`);
+          console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+          checkOut();
       }
-    }
-  });
+    },
+  );
 });
+
+// function (checkOut) {
+//       const user = nama;
+//       let CO = checkOut;
+
+//       rl.close();
+//     }
+
+// Mminuman.forEach((UiMenu) => {
+//         console.log(UiMenu);
+//       });
+
+//
+
+//memilih menu
+// switch (checkOut) {
+//   case "1":
+//     CO.push[`1. ${Kmenu[0].minuman} - Rp. ${Kmenu[0].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   case "2":
+//     CO.push[`2. ${Kmenu[1].minuman} - Rp. ${Kmenu[1].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   case "3":
+//     CO.push[`3. ${Kmenu[2].minuman} - Rp. ${Kmenu[2].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   case "4":
+//     CO.push[`4. ${Kmenu[3].minuman} - Rp. ${Kmenu[3].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   case "5":
+//     CO.push[`5. ${Kmenu[4].minuman} - Rp. ${Kmenu[4].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   case "6":
+//     CO.push[`6. ${Kmenu[5].minuman} - Rp. ${Kmenu[5].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   case "7":
+//     CO.push[`7. ${Kmenu[6].minuman} - Rp. ${Kmenu[6].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   case "8":
+//     CO.push[`8. ${Kmenu[7].minuman} - Rp. ${Kmenu[7].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   case "9":
+//     CO.push[`9. ${Kmenu[8].minuman} - Rp. ${Kmenu[8].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   case "10":
+//     CO.push[`10. ${Kmenu[9].minuman} - Rp. ${Kmenu[9].harga}`];
+//     console.log(`pesanan anda sudah masuk keranjang : ${CO}`);
+//     // checkOut();
+//     break;
+//   default:
+//     console.log("Menu tidak valid..!");
+//     checkOut();
+// }
