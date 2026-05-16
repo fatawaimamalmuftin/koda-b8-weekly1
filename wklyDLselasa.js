@@ -40,6 +40,7 @@ const wUser = "";
 //meminta nama yg menjalani sistem
 rl.question("👤 Masukan Nama Kamu dulu ya : ", function (nama) {
   Nuser = nama;
+  //ini fungsinya biar tampilan lebih clean, setiap menjalankan proses menghapus riwayat tampilan sebelumnya
   console.clear();
   console.log(`\nHai ${Nuser}, selamat datang di Hear Coffee ☕︎.ᐟ\n`);
   menuUtama();
@@ -56,7 +57,7 @@ function menuUtama() {
   console.log("4. 💳 Checkout");
   console.log("5. 🚪 Exit");
   console.log("═══════════════════════════════");
-  //pakai switch untuk memilih kodisi yg ingin di jalankan
+  //pakai switch untuk memilih kodisi yg ingin di jalankan. masih rencana ga tau dah entar jadi kaya gmana ini muftinnnn
   rl.question("👉 Mau ngapain nih? : ", function (pilih) {
     switch (pilih) {
       case "1":
@@ -79,18 +80,29 @@ function menuUtama() {
 
 //tampilan daftar menu dengan function parameter dan tipe kategori menu
 function tampilMenu(Tmenu, kategori) {
+  //ini fungsinya biar tampilan lebih clean, setiap menjalankan proses menghapus riwayat tampilan sebelumnya
   console.clear();
   console.log(`\n☕︎ Menu ${kategori} ✎﹏﹏\n`);
 
+  //melooping seluruh isi dari variabel Tmenu. sekarang belum di buat variabelnya
   for (let i = 0; i < Tmenu.length; i++) {
     console.log(`${i + 1}. ${Tmenu[i].nama} - Rp. ${Tmenu[i].harga}`);
   }
 
-  console.log(`\n0. 🔙 Balik dulss..`);
+  console.log(`\n0. 🔙 Balik dulss..`); // ini ceritanya balik ke menu utama
 
   rl.question("\nAyow silahkan di pilih sesuai nomor :", function (pilih) {
+    //validasi input
+    //kalo pilih 0 balik ke menu utama
     if (pilih === 0) {
       return menuUtama;
+    }
+    //kalo inputan kosong, inputan 0, inputan lebih dari isi menu
+    if (isNaN(pilih) || pilih < 1 || pilih > Tmenu.length) {
+      //bakal ngeluarin ini
+      console.log("❌ Input apa dah lu....");
+      //dan ke tampilan sesuai tipe menu apa yg di jalankan sebelumnya
+      return tampilMenu(Tmenu, kategori);
     }
   });
 }
