@@ -104,6 +104,16 @@ function tampilMenu(Tmenu, kategori) {
       //dan ke tampilan sesuai tipe menu apa yg di jalankan sebelumnya
       return tampilMenu(Tmenu, kategori);
     }
+
+    //ini untuk menyamakan angka inputan dengan index
+    let index = pilih - 1;
+    //masukin qty yg mau di beli
+    rl.question("👉 Mau berapa bosz?? ", function (qty) {
+      if (isNaN(qty) || qty <= 0) {
+        console.log("❌ Ngatuk bree??");
+        return tampilMenu(Tmenu, kategori);
+      }
+    });
   });
 }
 
