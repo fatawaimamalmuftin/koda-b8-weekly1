@@ -18,12 +18,11 @@ Kmenu = [
 ];
 
 let Mminuman = [];
-let CO = [];
-
 rl.question("Masukan Nama Anda : ", function (nama) {
   //menampilkan menu dengan nama yang sedang memesan
   console.log(`\nHai ${nama}, Selamat Datang di Hear Coffee ☕︎ྀི`);
   function ulangMenu() {
+    let keranjangTunggu = [];
     //
     console.log("---------------------------------------------");
     console.log("Aneka Kopi :✎﹏﹏ Hear | Caffee (っ-,-)つ☕ ﹏");
@@ -46,58 +45,111 @@ rl.question("Masukan Nama Anda : ", function (nama) {
 
         switch (checkOut) {
           case "1":
-            CO.push(`1. ${Kmenu[0].minuman} - Rp. ${Kmenu[0].harga}`);
-            console.log(`Kopi Hear masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[0].minuman,
+              harga: Kmenu[0].harga,
+            });
+            console.log(`\nKopi Hear sudah masuk keranjang ✅️\n`);
+            rl.question("Mau pesen lagi? Y/N ", function (y, n) {
+              if (y) {
+                ulangMenu();
+              }
+            });
+            // ulangMenu();
             break;
           case "2":
-            CO.push(`2. ${Kmenu[1].minuman} - Rp. ${Kmenu[1].harga}`);
-            console.log(`Cafe Latte masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[1].minuman,
+              harga: Kmenu[1].harga,
+            });
+            console.log(`\nCafe Latte sudah masuk keranjang ✅️\n`);
+            if (y) {
+              ulangMenu();
+            }
             break;
           case "3":
-            CO.push(`3. ${Kmenu[2].minuman} - Rp. ${Kmenu[2].harga}`);
-            console.log(`Cappuccino masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[2].minuman,
+              harga: Kmenu[2].harga,
+            });
+            console.log(`\nCappuccino sudah masuk keranjang ✅️\n`);
+            if (y) {
+              ulangMenu();
+            }
             break;
           case "4":
-            CO.push(`4. ${Kmenu[3].minuman} - Rp. ${Kmenu[3].harga}`);
-            console.log(`Espresso masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[3].minuman,
+              harga: Kmenu[3].harga,
+            });
+            console.log(`\nEspresso sudah masuk keranjang ✅️\n`);
+            if (y) {
+              ulangMenu();
+            }
             break;
           case "5":
-            CO.push(`5. ${Kmenu[4].minuman} - Rp. ${Kmenu[4].harga}`);
-            console.log(`Americano masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[4].minuman,
+              harga: Kmenu[4].harga,
+            });
+            console.log(`\nAmericano sudah masuk keranjang ✅️\n`);
+            if (y) {
+              ulangMenu();
+            }
             break;
           case "6":
-            CO.push(`6. ${Kmenu[5].minuman} - Rp. ${Kmenu[5].harga}`);
-            console.log(`Signature V60 masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[5].minuman,
+              harga: Kmenu[5].harga,
+            });
+            console.log(`\nSignature V60 sudah masuk keranjang ✅️\n`);
+            if (y) {
+              ulangMenu();
+            }
             break;
           case "7":
-            CO.push(`7. ${Kmenu[6].minuman} - Rp. ${Kmenu[6].harga}`);
-            console.log(`Vietnam Drip masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[6].minuman,
+              harga: Kmenu[6].harga,
+            });
+            console.log(`\nVietnam Drip sudah masuk keranjang ✅️\n`);
+            if (y) {
+              ulangMenu();
+            }
             break;
           case "8":
-            CO.push(`8. ${Kmenu[7].minuman} - Rp. ${Kmenu[7].harga}`);
-            console.log(`Espresso BOOM~! masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[7].minuman,
+              harga: Kmenu[7].harga,
+            });
+            console.log(`\nEspresso BOOM~! sudah masuk keranjang ✅️\n`);
+            if (y) {
+              ulangMenu();
+            }
             break;
           case "9":
-            CO.push(`9. ${Kmenu[8].minuman} - Rp. ${Kmenu[8].harga}`);
-            console.log(`Kopi Gula Aren masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[8].minuman,
+              harga: Kmenu[8].harga,
+            });
+            console.log(`\nKopi Gula Aren sudah masuk keranjang ✅️\n`);
+            if (y) {
+              ulangMenu();
+            }
             break;
           case "10":
-            CO.push(`10. ${Kmenu[9].minuman} - Rp. ${Kmenu[9].harga}`);
-            console.log(`Machiato masuk keranjang :`, CO);
-            ulangMenu();
+            keranjangTunggu.push({
+              minuman: Kmenu[9].minuman,
+              harga: Kmenu[9].harga,
+            });
+            console.log(`\nMachiato sudah masuk keranjang ✅️\n`);
+            if (y) {
+              ulangMenu();
+            }
             break;
           default:
             console.log(
-              "Input tidak valid. Silakan pilih nomor menu yang tersedia.",
+              "\nInput tidak valid. Silakan pilih nomor menu yang tersedia.",
             );
             ulangMenu();
         }
