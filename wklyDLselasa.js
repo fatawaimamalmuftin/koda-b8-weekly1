@@ -1,162 +1,104 @@
-const readline = require("readline");
+const readline = require("readline"); //mengakses method readline
 const rl = readline.createInterface({
+  //mengakses fungsi creatInterface dari method readline
   input: process.stdin,
   output: process.stdout,
+  // stdin dan stdout itu di akses dari fungsi creatInterface
 });
 
-Kmenu = [
-  { minuman: "Kopi Hear", harga: 31000 },
-  { minuman: "Cafe Latte", harga: 38000 },
-  { minuman: "Cappuccino", harga: 31000 },
-  { minuman: "Espresso", harga: 20000 },
-  { minuman: "Americano", harga: 25000 },
-  { minuman: "Signature V60", harga: 40000 },
-  { minuman: "Vietnam Drip", harga: 30000 },
-  { minuman: "Espresso BOOM~!", harga: 50000 },
-  { minuman: "Kopi Gula Aren", harga: 48000 },
-  { minuman: "Machiato", harga: 48000 },
+//membuat array yg berisi object minuman Kopi seris yg menjadi simulasi database
+const Kmenu = [
+  { nama: "Kopi Hear", harga: 31000 },
+  { nama: "Cafe Latte", harga: 38000 },
+  { nama: "Cappuccino", harga: 31000 },
+  { nama: "Espresso", harga: 20000 },
+  { nama: "Americano", harga: 25000 },
+  { nama: "Signature V60", harga: 40000 },
+  { nama: "Vietnam Drip", harga: 30000 },
+  { nama: "Espresso BOOM~!", harga: 50000 },
+  { nama: "Kopi Gula Aren", harga: 48000 },
+  { nama: "Machiato", harga: 48000 },
 ];
 
-let Mminuman = [];
-rl.question("Masukan Nama Anda : ", function (nama) {
-  //menampilkan menu dengan nama yang sedang memesan
-  console.log(`\nHai ${nama}, Selamat Datang di Hear Coffee ☕︎ྀི`);
-  function ulangMenu() {
-    let keranjangTunggu = [];
-    //
-    console.log("---------------------------------------------");
-    console.log("Aneka Kopi :✎﹏﹏ Hear | Caffee (っ-,-)つ☕ ﹏");
-    console.log("---------------------------------------------");
-    for (let i = 0; i < Kmenu.length; i++) {
-      Mminuman.push(
-        `   | ${i + 1}. ${Kmenu[i].minuman} - Rp. ${Kmenu[i].harga} ☕︎.ᐟ\n`,
-      );
-      //   console.log("---------------------------------------------");
-      console.log(Mminuman[i]);
-      console.log("---------------------------------------------");
-    }
-    rl.question(
-      "Masukan sesuai nomor menu yg ingin di pesan : ",
-      function (checkOut) {
-        if (isNaN(checkOut) || checkOut < 1 || checkOut > Kmenu.length) {
-          console.log("Input sesuai nomor menu..!");
-          return ulangMenu();
-        }
+const Mmenu = [
+  { nama: "Croissant Butter", harga: 20000 },
+  { nama: "Chocolate Croissant", harga: 25000 },
+  { nama: "Chicken Sandwich", harga: 30000 },
+  { nama: "Beef Sandwich", harga: 35000 },
+  { nama: "French Fries", harga: 22000 },
+  { nama: "Onion Rings", harga: 20000 },
+  { nama: "Brownies Chocolate", harga: 18000 },
+  { nama: "Cheese Cake", harga: 28000 },
+  { nama: "Donat Gula", harga: 15000 },
+  { nama: "Pisang Goreng", harga: 17000 },
+];
 
-        switch (checkOut) {
-          case "1":
-            keranjangTunggu.push({
-              minuman: Kmenu[0].minuman,
-              harga: Kmenu[0].harga,
-            });
-            console.log(`\nKopi Hear sudah masuk keranjang ✅️\n`);
-            rl.question("Mau pesen lagi? Y/N ", function (y, n) {
-              if (y) {
-                ulangMenu();
-              }
-            });
-            // ulangMenu();
-            break;
-          case "2":
-            keranjangTunggu.push({
-              minuman: Kmenu[1].minuman,
-              harga: Kmenu[1].harga,
-            });
-            console.log(`\nCafe Latte sudah masuk keranjang ✅️\n`);
-            if (y) {
-              ulangMenu();
-            }
-            break;
-          case "3":
-            keranjangTunggu.push({
-              minuman: Kmenu[2].minuman,
-              harga: Kmenu[2].harga,
-            });
-            console.log(`\nCappuccino sudah masuk keranjang ✅️\n`);
-            if (y) {
-              ulangMenu();
-            }
-            break;
-          case "4":
-            keranjangTunggu.push({
-              minuman: Kmenu[3].minuman,
-              harga: Kmenu[3].harga,
-            });
-            console.log(`\nEspresso sudah masuk keranjang ✅️\n`);
-            if (y) {
-              ulangMenu();
-            }
-            break;
-          case "5":
-            keranjangTunggu.push({
-              minuman: Kmenu[4].minuman,
-              harga: Kmenu[4].harga,
-            });
-            console.log(`\nAmericano sudah masuk keranjang ✅️\n`);
-            if (y) {
-              ulangMenu();
-            }
-            break;
-          case "6":
-            keranjangTunggu.push({
-              minuman: Kmenu[5].minuman,
-              harga: Kmenu[5].harga,
-            });
-            console.log(`\nSignature V60 sudah masuk keranjang ✅️\n`);
-            if (y) {
-              ulangMenu();
-            }
-            break;
-          case "7":
-            keranjangTunggu.push({
-              minuman: Kmenu[6].minuman,
-              harga: Kmenu[6].harga,
-            });
-            console.log(`\nVietnam Drip sudah masuk keranjang ✅️\n`);
-            if (y) {
-              ulangMenu();
-            }
-            break;
-          case "8":
-            keranjangTunggu.push({
-              minuman: Kmenu[7].minuman,
-              harga: Kmenu[7].harga,
-            });
-            console.log(`\nEspresso BOOM~! sudah masuk keranjang ✅️\n`);
-            if (y) {
-              ulangMenu();
-            }
-            break;
-          case "9":
-            keranjangTunggu.push({
-              minuman: Kmenu[8].minuman,
-              harga: Kmenu[8].harga,
-            });
-            console.log(`\nKopi Gula Aren sudah masuk keranjang ✅️\n`);
-            if (y) {
-              ulangMenu();
-            }
-            break;
-          case "10":
-            keranjangTunggu.push({
-              minuman: Kmenu[9].minuman,
-              harga: Kmenu[9].harga,
-            });
-            console.log(`\nMachiato sudah masuk keranjang ✅️\n`);
-            if (y) {
-              ulangMenu();
-            }
-            break;
-          default:
-            console.log(
-              "\nInput tidak valid. Silakan pilih nomor menu yang tersedia.",
-            );
-            ulangMenu();
-        }
-      },
-    );
-  }
-  ulangMenu();
+//membuat penampung nama user pengguna dan isi keranjang yg di tarok di scope terbesar
+const wKeranjang = [];
+const wUser = "";
+
+//meminta nama yg menjalani sistem
+rl.question("👤 Masukan Nama Kamu dulu ya : ", function (nama) {
+  Nuser = nama;
+  console.clear();
+  console.log(`\nHai ${Nuser}, selamat datang di Hear Coffee ☕︎.ᐟ\n`);
+  menuUtama();
 });
 
-// console.log(CO);
+//Bikin menu utama
+function menuUtama() {
+  console.log("═══════════════════════════════");
+  console.log("☕︎        HEAR COFFEE         ☕︎");
+  console.log("═══════════════════════════════");
+  console.log("1. ☕︎ Pesan Kopi");
+  console.log("2. 🍔 Pesan Makanan");
+  console.log("3. 🛒 Lihat Keranjang");
+  console.log("4. 💳 Checkout");
+  console.log("5. 🚪 Exit");
+  console.log("═══════════════════════════════");
+  //pakai switch untuk memilih kodisi yg ingin di jalankan
+  rl.question("👉 Mau ngapain nih? : ", function (pilih) {
+    switch (pilih) {
+      case "1":
+        break;
+      case "2":
+        break;
+      case "3":
+        break;
+      case "4":
+        break;
+      //kalo milih 5 memberhentikan program dengan rl.close()
+      case "5":
+        rl.close();
+        break;
+      default:
+        menuUtama;
+    }
+  });
+}
+
+//tampilan daftar menu dengan function parameter dan tipe kategori menu
+function tampilMenu(Tmenu, kategori) {
+  console.clear();
+  console.log(`\n☕︎ Menu ${kategori} ✎﹏﹏\n`);
+
+  for (let i = 0; i < Tmenu.length; i++) {
+    console.log(`${i + 1}. ${Tmenu[i].nama} - Rp. ${Tmenu[i].harga}`);
+  }
+
+  console.log(`\n0. 🔙 Balik dulss..`);
+
+  rl.question("\nAyow silahkan di pilih sesuai nomor :", function (pilih) {
+    if (pilih === 0) {
+      return menuUtama;
+    }
+  });
+}
+
+// for (let i = 0; i < Kmenu.length; i++) {
+//   const kopiSeris = Kmenu[i];
+// }
+
+// for (let i = 0; i < Mmenu.length; i++) {
+//   const kopiSeris = Mmenu[i];
+// }
