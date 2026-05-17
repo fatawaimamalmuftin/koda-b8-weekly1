@@ -61,8 +61,10 @@ function menuUtama() {
   rl.question("👉 Mau ngapain nih? : ", function (pilih) {
     switch (pilih) {
       case "1":
+        tampilMenu(Kmenu, "KOPI");
         break;
       case "2":
+        tampilMenu(Mmenu, "MAKANAN");
         break;
       case "3":
         break;
@@ -70,6 +72,9 @@ function menuUtama() {
         break;
       //kalo milih 5 memberhentikan program dengan rl.close()
       case "5":
+        console.log(
+          "\nTerima Kasih ( ๑ ˃̵ᴗ˂̵)و ♡\nDi tunggu kembali kedatangananya... ☕\n",
+        );
         rl.close();
         break;
       default:
@@ -91,16 +96,15 @@ function tampilMenu(Tmenu, kategori) {
 
   console.log(`\n0. 🔙 Balik dulss..`); // ini ceritanya balik ke menu utama
 
-  rl.question("\nAyow silahkan di pilih sesuai nomor :", function (pilih) {
+  rl.question("\nAyow silahkan di pilih sesuai nomor : ", function (pilih) {
     //validasi input
     //kalo pilih 0 balik ke menu utama
-    if (pilih === 0) {
-      return menuUtama;
-    }
+    if (pilih === "0") return menuUtama();
+
     //kalo inputan kosong, inputan 0, inputan lebih dari isi menu
     if (isNaN(pilih) || pilih < 1 || pilih > Tmenu.length) {
       //bakal ngeluarin ini
-      console.log("❌ Input apa dah lu....");
+      console.log("❌ Ngatuk bree??\n（ꐦ𝅒_𝅒");
       //dan ke tampilan sesuai tipe menu apa yg di jalankan sebelumnya
       return tampilMenu(Tmenu, kategori);
     }
@@ -110,9 +114,27 @@ function tampilMenu(Tmenu, kategori) {
     //masukin qty yg mau di beli
     rl.question("👉 Mau berapa bosz?? ", function (qty) {
       if (isNaN(qty) || qty <= 0) {
-        console.log("❌ Ngatuk bree??");
+        console.log("❌ Ngatuk bree??\n（ꐦ𝅒_𝅒）");
         return tampilMenu(Tmenu, kategori);
       }
+      //ini masukan nama menu dan harga menu ke keranjang dan urutannya menjadi sesuai index array
+      wKeranjang.push({
+        nama: Tmenu[index].nama,
+        harga: Tmenu[index].harga,
+        //input qty awalnya string menggunakan parseInt() untuk mengubah tipe data menjadi number
+        qty: parseInt(qty),
+      });
+
+      console.log(`\n${Tmenu[index].nama} udah masuk keranjang bosz! ⁀➴
+                                        🛒`);
+      //menu tambahan untuk memilih selanjutnya mau ngapain
+
+      console.log("\n(｡· v ·｡) ?\nMau lanjut apa bosz?\n");
+      console.log("1. ➕ Tambah lagi");
+      console.log("2. 🛒 Lihat Keranjang");
+      console.log("3. 💳 Checkout sekarang");
+      console.log("4. 🔙 Menu Utama");
+      rl.question("", function () {});
     });
   });
 }
