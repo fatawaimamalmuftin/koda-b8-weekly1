@@ -72,6 +72,7 @@ function menuUtama() {
         break;
       //kalo milih 5 memberhentikan program dengan rl.close()
       case "5":
+        console.clear();
         console.log(
           "\nTerima Kasih ( ๑ ˃̵ᴗ˂̵)و ♡\nDi tunggu kembali kedatangananya... ☕\n",
         );
@@ -134,7 +135,22 @@ function tampilMenu(Tmenu, kategori) {
       console.log("2. 🛒 Lihat Keranjang");
       console.log("3. 💳 Checkout sekarang");
       console.log("4. 🔙 Menu Utama");
-      rl.question("", function () {});
+      rl.question("\n👉 Lanjut ngapain bosz??... ", function (pilih) {
+        switch (pilih) {
+          case "1":
+            tampilMenu(Tmenu, kategori);
+            break;
+          case "2":
+            //ke keranjang
+            break;
+          case "3":
+            //langsung payment
+            break;
+          case "4":
+            menuUtama();
+            break;
+        }
+      });
     });
   });
 }
