@@ -34,14 +34,15 @@ const Mmenu = [
 ];
 
 //membuat penampung nama user pengguna dan isi keranjang yg di tarok di scope terbesar
-const wKeranjang = [];
+let wKeranjang = [];
+let Wuser = "";
 
 //meminta nama yg menjalani sistem
-rl.question("👤 Masukan Nama Kamu dulu ya : ", function (nama) {
-  Nuser = nama;
+rl.question(`👤 Masukan Nama ${Wuser} dulu ya : `, function (nama) {
+  Wuser = nama;
   //ini fungsinya biar tampilan lebih clean, setiap menjalankan proses menghapus riwayat tampilan sebelumnya
   console.clear();
-  console.log(`\nHai ${Nuser}, selamat datang di Hear Coffee ☕︎.ᐟ\n`);
+  console.log(`\nHai ${Wuser}, selamat datang di Hear Coffee ☕︎.ᐟ\n`);
   menuUtama();
 });
 
@@ -50,7 +51,7 @@ function menuUtama() {
   console.log("═══════════════════════════════");
   console.log("☕︎        HEAR COFFEE         ☕︎");
   console.log("═══════════════════════════════");
-  console.log("1. ☕︎ Pesan Kopi");
+  console.log("1. ☕ Pesan Kopi");
   console.log("2. 🍔 Pesan Makanan");
   console.log("3. 🛒 Lihat Keranjang");
   console.log("4. 💳 Checkout");
@@ -66,6 +67,7 @@ function menuUtama() {
         tampilMenu(Mmenu, "MAKANAN");
         break;
       case "3":
+        lihatKeranjang();
         break;
       case "4":
         break;
@@ -130,24 +132,16 @@ function tampilMenu(Tmenu, kategori) {
       //menu tambahan untuk memilih selanjutnya mau ngapain
 
       console.log("\n(｡· v ·｡) ?\nMau lanjut apa bosz?\n");
-      console.log("1. ➕ Tambah lagi");
-      console.log("2. 🛒 Lihat Keranjang");
-      console.log("3. 💳 Checkout sekarang");
-      console.log("4. 🔙 Menu Utama");
+      console.log("1. 🔙 Menu Utama");
+      console.log("2. 💳 Checkout sekarang");
       rl.question("\n👉 Lanjut ngapain bosz??... ", function (pilih) {
         switch (pilih) {
           case "1":
-            tampilMenu(Tmenu, kategori);
+            menuUtama();
             break;
           case "2":
-            //liat keranjang
-            LiatK();
-            break;
-          case "3":
             //langsung payment
-            break;
-          case "4":
-            menuUtama();
+            lihatKeranjang();
             break;
           default:
             console.log("❌ Pilihannya ga ada loh （ꐦ𝅒_𝅒）");
@@ -155,35 +149,49 @@ function tampilMenu(Tmenu, kategori) {
         }
       });
     });
-
-    //ini proses keranjang
-    function LiatK() {
-      console.clear();
-      console.log("🛒 Keranjang kamu ✎﹏﹏\n");
-      if (wKeranjang === 0) {
-        console.log("Masih Kosong 😭");
-      }
-      let total = 0;
-      for (let i = 0; i < wKeranjang.length; i++) {
-        let item = wKeranjang[i];
-        subtotal = item.harga * item.harga;
-        total += subtotal;
-
-        console.log(`${item.nama} x ${item.harga} = ${subtotal}`);
-      }
-      console.log("═══════════════════════════════");
-      console.log(`\nTotal : Rp. ${total}`);
-      rl.question("\nTekan enter untuk balik.....", function () {
-        menuUtama();
-      });
-    }
   });
 }
 
-// for (let i = 0; i < Kmenu.length; i++) {
-//   const kopiSeris = Kmenu[i];
-// }
+//ini proses keranjang
+function lihatKeranjang() {
+  console.clear();
+  console.log(`\n🛒 Keranjang ${Wuser} ✎﹏﹏\n`);
 
-// for (let i = 0; i < Mmenu.length; i++) {
-//   const kopiSeris = Mmenu[i];
-// }
+  if (wKeranjang.length === 0) {
+    console.log("Masih Kosong 😭\n");
+    return menuUtama();
+  }
+
+  let total = 0;
+
+  for (let i = 0; i < wKeranjang.length; i++) {
+    let item = wKeranjang[i];
+    let subtotal = item.harga * item.harga;
+    total += subtotal;
+
+    console.log(`${item.nama} x ${item.qty} = Rp. ${subtotal}`);
+  }
+  console.log("═══════════════════════════════");
+  console.log(`\nTotal : Rp. ${total}\n`);
+
+  console.log("1. 🔙 Menu Utama");
+  console.log("2. 💳 Checkout sekarang");
+
+  rl.question(
+    "Mau langsun Payment atau mau tambah pesenan bosz: ",
+    function (piih) {
+      switch (piih) {
+        case "1":
+          menuUtama();
+          break;
+        case "2":
+          //langsung bayar
+          break;
+        default:
+          console.log("❌ Pilihan tidak ada");
+          menuUtama();
+          break;
+      }
+    },
+  );
+}
