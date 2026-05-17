@@ -35,7 +35,6 @@ const Mmenu = [
 
 //membuat penampung nama user pengguna dan isi keranjang yg di tarok di scope terbesar
 const wKeranjang = [];
-const wUser = "";
 
 //meminta nama yg menjalani sistem
 rl.question("👤 Masukan Nama Kamu dulu ya : ", function (nama) {
@@ -105,7 +104,7 @@ function tampilMenu(Tmenu, kategori) {
     //kalo inputan kosong, inputan 0, inputan lebih dari isi menu
     if (isNaN(pilih) || pilih < 1 || pilih > Tmenu.length) {
       //bakal ngeluarin ini
-      console.log("❌ Ngatuk bree??\n（ꐦ𝅒_𝅒");
+      console.log("❌ Pilihannya ga ada loh （ꐦ𝅒_𝅒");
       //dan ke tampilan sesuai tipe menu apa yg di jalankan sebelumnya
       return tampilMenu(Tmenu, kategori);
     }
@@ -115,7 +114,7 @@ function tampilMenu(Tmenu, kategori) {
     //masukin qty yg mau di beli
     rl.question("👉 Mau berapa bosz?? ", function (qty) {
       if (isNaN(qty) || qty <= 0) {
-        console.log("❌ Ngatuk bree??\n（ꐦ𝅒_𝅒）");
+        console.log("❌ Pilihannya ga ada loh （ꐦ𝅒_𝅒）");
         return tampilMenu(Tmenu, kategori);
       }
       //ini masukan nama menu dan harga menu ke keranjang dan urutannya menjadi sesuai index array
@@ -141,7 +140,8 @@ function tampilMenu(Tmenu, kategori) {
             tampilMenu(Tmenu, kategori);
             break;
           case "2":
-            //ke keranjang
+            //liat keranjang
+            LiatK();
             break;
           case "3":
             //langsung payment
@@ -149,9 +149,34 @@ function tampilMenu(Tmenu, kategori) {
           case "4":
             menuUtama();
             break;
+          default:
+            console.log("❌ Pilihannya ga ada loh （ꐦ𝅒_𝅒）");
+            break;
         }
       });
     });
+
+    //ini proses keranjang
+    function LiatK() {
+      console.clear();
+      console.log("🛒 Keranjang kamu ✎﹏﹏\n");
+      if (wKeranjang === 0) {
+        console.log("Masih Kosong 😭");
+      }
+      let total = 0;
+      for (let i = 0; i < wKeranjang.length; i++) {
+        let item = wKeranjang[i];
+        subtotal = item.harga * item.harga;
+        total += subtotal;
+
+        console.log(`${item.nama} x ${item.harga} = ${subtotal}`);
+      }
+      console.log("═══════════════════════════════");
+      console.log(`\nTotal : Rp. ${total}`);
+      rl.question("\nTekan enter untuk balik.....", function () {
+        menuUtama();
+      });
+    }
   });
 }
 
