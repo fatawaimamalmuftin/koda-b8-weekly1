@@ -140,8 +140,7 @@ function tampilMenu(Tmenu, kategori) {
             menuUtama();
             break;
           case "2":
-            //langsung payment
-            lihatKeranjang();
+            checkOut();
             break;
           default:
             console.log("❌ Pilihannya ga ada loh （ꐦ𝅒_𝅒）");
@@ -158,7 +157,7 @@ function lihatKeranjang() {
   console.log(`\n🛒 Keranjang ${Wuser} ✎﹏﹏\n`);
 
   if (wKeranjang.length === 0) {
-    console.log("Masih Kosong 😭\n");
+    console.log(`Masih Kosong ${Wuser} 😭\n`);
     return menuUtama();
   }
 
@@ -185,7 +184,7 @@ function lihatKeranjang() {
           menuUtama();
           break;
         case "2":
-          //langsung bayar
+          checkOut();
           break;
         default:
           console.log("❌ Pilihan tidak ada");
@@ -194,4 +193,36 @@ function lihatKeranjang() {
       }
     },
   );
+}
+
+//ini proses checkout
+function checkOut() {
+  console.clear();
+  if (wKeranjang.length === 0) {
+    console.log(`Masih Kosong ${Wuser} 😭\n`);
+    return menuUtama();
+  }
+
+  let total = 0;
+
+  for (let i = 0; i < wKeranjang.length; i++) {
+    let item = wKeranjang[i];
+    let subtotal = item.harga * item.qty;
+    total += subtotal;
+
+    console.log(`${item.nama} x ${item.qty} = ${subtotal}`);
+  }
+  console.log("═══════════════════════════════");
+  console.log(`\nTotal : Rp. ${total}\n`);
+  rl.question("Lanjut Payment bosz?? : y/n ", function (pilih) {
+    if (pilih === "y") {
+      console.log("\n🧾 STRUK");
+      console.log(`Nama: ${Wuseruser}`);
+      console.log("Total: Rp" + total);
+      console.log("Terima kasih ☕");
+      rl.close();
+    } else {
+      menuUtama;
+    }
+  });
 }
