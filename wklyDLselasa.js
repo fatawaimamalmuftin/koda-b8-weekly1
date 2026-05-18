@@ -132,19 +132,27 @@ function tampilMenu(Tmenu, kategori) {
       //menu tambahan untuk memilih selanjutnya mau ngapain
 
       console.log("\n(｡· v ·｡) ?\nMau lanjut apa bosz?\n");
-      console.log("1. 🔙 Menu Utama");
-      console.log("2. 💳 Checkout sekarang");
+      console.log("1. ➕ Tambah lagi");
+      console.log("2. 🛒 Lihat Keranjang");
+      console.log("3. 💳 Checkout sekarang");
+      console.log("4. 🔙 Menu Utama");
       rl.question("\n👉 Lanjut ngapain bosz??... ", function (pilih) {
         switch (pilih) {
           case "1":
-            menuUtama();
+            tampilMenu(Tmenu, kategori);
             break;
           case "2":
-            checkOut();
+            lihatKeranjang();
+            break;
+          case "3":
+            checkout();
+            break;
+          case "4":
+            menuUtama();
             break;
           default:
-            console.log("❌ Pilihannya ga ada loh （ꐦ𝅒_𝅒）");
-            break;
+            console.log("❌ Pilihan tidak ada");
+            menuUtama();
         }
       });
     });
@@ -217,7 +225,7 @@ function checkOut() {
   rl.question("Lanjut Payment bosz?? : y/n ", function (pilih) {
     if (pilih === "y") {
       console.log("\n🧾 STRUK");
-      console.log(`Nama: ${Wuseruser}`);
+      console.log(`Nama: ${Wuser}`);
       console.log("Total: Rp" + total);
       console.log("Terima kasih ☕");
       rl.close();
