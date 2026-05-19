@@ -64,7 +64,7 @@ function menuUtama() {
         tampilMenu(Kmenu, "KOPI");
         break;
       case "2":
-        tampilMenu(Dmenu, "MAKANAN");
+        tampilMenu(Dmenu, "DISERT");
         break;
       case "3":
         lihatKeranjang();
@@ -106,7 +106,7 @@ function tampilMenu(Tmenu, kategori) {
     //kalo inputan kosong, inputan 0, inputan lebih dari isi menu
     if (isNaN(pilih) || pilih < 1 || pilih > Tmenu.length) {
       //bakal ngeluarin ini
-      console.log("❌ Pilihannya ga ada loh （ꐦ𝅒_𝅒");
+      console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
       //dan ke tampilan sesuai tipe menu apa yg di jalankan sebelumnya
       return tampilMenu(Tmenu, kategori);
     }
@@ -116,7 +116,7 @@ function tampilMenu(Tmenu, kategori) {
     //masukin qty yg mau di beli
     rl.question("👉 Mau berapa bosz?? ", function (qty) {
       if (isNaN(qty) || qty <= 0) {
-        console.log("❌ Pilihannya ga ada loh （ꐦ𝅒_𝅒）");
+        console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
         return tampilMenu(Tmenu, kategori);
       }
       //ini masukan nama menu dan harga menu ke keranjang dan urutannya menjadi sesuai index array
@@ -151,7 +151,7 @@ function tampilMenu(Tmenu, kategori) {
             menuUtama();
             break;
           default:
-            console.log("❌ Pilihan tidak ada");
+            console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
             menuUtama();
         }
       });
@@ -195,7 +195,7 @@ function lihatKeranjang() {
           checkOut();
           break;
         default:
-          console.log("❌ Pilihan tidak ada");
+          console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
           menuUtama();
           break;
       }
@@ -227,7 +227,7 @@ function checkOut() {
       console.log("\n🧾 STRUK");
       console.log(`Nama: ${Wuser}`);
       console.log("Total: Rp" + total);
-      console.log("Terima kasih ☕");
+      console.log(`Terima kasih  ${Wuser} ☕`);
       rl.close();
     } else {
       menuUtama;
