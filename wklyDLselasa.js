@@ -52,7 +52,7 @@ function menuUtama() {
   console.log("☕︎        HEAR COFFEE         ☕︎");
   console.log("═══════════════════════════════");
   console.log("1. ☕ Pesan Kopi");
-  console.log("2. 🍔 Pesan Makanan");
+  console.log("2. 🍔 Pesan Disert");
   console.log("3. 🛒 Lihat Keranjang");
   console.log("4. 💳 Checkout");
   console.log("5. 🚪 Exit");
