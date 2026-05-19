@@ -20,7 +20,7 @@ const Kmenu = [
   { nama: "Machiato", harga: 48000 },
 ];
 
-const Mmenu = [
+const Dmenu = [
   { nama: "Croissant Butter", harga: 20000 },
   { nama: "Chocolate Croissant", harga: 25000 },
   { nama: "Chicken Sandwich", harga: 30000 },
@@ -64,14 +64,14 @@ function menuUtama() {
         tampilMenu(Kmenu, "KOPI");
         break;
       case "2":
-        tampilMenu(Mmenu, "MAKANAN");
+        tampilMenu(Dmenu, "MAKANAN");
         break;
       case "3":
         lihatKeranjang();
         break;
       case "4":
         break;
-      //kalo milih 5 memberhentikan program dengan rl.close()
+        checkOut();
       case "5":
         console.clear();
         console.log(
