@@ -1,0 +1,20 @@
+{
+  "name": "weekly-koda",
+  "version": "1.0.0",
+  "description": "Weekly1",
+  "license": "ISC",
+  "author": "XONE",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch index.js",
+    "lint": "npx eslint ./index.js ./lihatKeranjang.js ./menu.js ./db.js",
+    "lint:fix": "npx eslint ./index.js ./lihatKeranjang.js ./menu.js ./db.js --fix"    
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.4.0",
+    "globals": "^17.6.0"
+  }
+}
