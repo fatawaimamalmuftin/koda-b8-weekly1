@@ -43,7 +43,7 @@ export function menuUtama() {
   console.log("═══════════════════════════════");
   console.log("☕︎        HEAR COFFEE         ☕︎");
   console.log("═══════════════════════════════");
-  console.log("0. Liat semua menu dulu sebelum milih boleh di sini yaa ~");
+  console.log("0. 𐦂𖨆𐀪𖠋 Liat semua menu dulu sebelum milih boleh di sini yaa 𐦂𖨆𐀪𖠋");
   console.log("1. ☕ Pesan Kopi");
   console.log("2. 🍔 Pesan Disert");
   console.log("3. 🛒 Lihat Keranjang");
@@ -54,18 +54,17 @@ export function menuUtama() {
   rl.question("👉 Mau ngapain nih? : ", function (pilih) {
     switch (pilih) {
     case "0":
-      console.log(`\nHallow ${Wuser}, di Hear Coffe kita punya makanan dan minuman,\n 
-      untuk memesan tekan enter yaa ~\n`);
+      console.log(`\nHallow ${Wuser}, di Hear Coffe kita punya makanan dan minuman 🍝🍜👩🏻‍🍳🥘🤌🏻`);
 
       seluruhMenu.forEach((item)=>console.log(`Kita punya : ${item.nama} - Rp. ${item.harga}\n`));
     
-      rl.question("Tekan enter untuk kembali ke menu utama....", function(){menuUtama();});
+      rl.question("Tekan enter untuk memesan ....↩", function(){menuUtama();});
       break;
     case "1":
-      tampilMenu(Kmenu, "KOPI");
+      tampilMenu(Kmenu, "KOPI ☕︎ྀི");
       break;
     case "2":
-      tampilMenu(Dmenu, "DISERT");
+      tampilMenu(Dmenu, "DISERT 𐂐◯𓇋");
       break;
     case "3":
       lihatKeranjang();
@@ -76,7 +75,7 @@ export function menuUtama() {
     case "5":
       console.clear();
       console.log(
-        "\nTerima Kasih ( ๑ ˃̵ᴗ˂̵)و ♡\nDi tunggu kembali kedatangananya... ☕\n",
+        "\n✎ᝰ. Terima Kasih ( ๑ ˃̵ᴗ˂̵)و ♡\nDi tunggu kembali kedatangananya... ☕\n 𐦂𖨆𐀪𖠋𐀪𐀪 𓆝 𓆟 𓆞 𓆝 𓆟 𐦂𖨆𐀪𖠋𐀪𐀪 𓆝 𓆟 𓆞 𓆝 𓆟 ✌︎︎",
       );
       rl.close();
       break;
