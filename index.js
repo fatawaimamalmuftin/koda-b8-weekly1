@@ -11,6 +11,7 @@ export const rl = readline.createInterface({
 //membuat array yg berisi object minuman Kopi seris yg menjadi simulasi database
 export let Kmenu = [];
 export let Dmenu = [];
+let seluruhMenu = [];
 
 export let Wuser = "";
 
@@ -22,6 +23,7 @@ async function init() {
   }
   Kmenu = data.menuKopi;
   Dmenu = data.menuDesert;
+  seluruhMenu = [...Dmenu,...Kmenu];
 
   console.clear();
 
@@ -41,6 +43,7 @@ export function menuUtama() {
   console.log("═══════════════════════════════");
   console.log("☕︎        HEAR COFFEE         ☕︎");
   console.log("═══════════════════════════════");
+  console.log("0. Liat semua menu dulu sebelum milih boleh di sini yaa ~")
   console.log("1. ☕ Pesan Kopi");
   console.log("2. 🍔 Pesan Disert");
   console.log("3. 🛒 Lihat Keranjang");
@@ -50,6 +53,14 @@ export function menuUtama() {
   //pakai switch untuk memilih kodisi yg ingin di jalankan. masih rencana ga tau dah entar jadi kaya gmana ini muftinnnn
   rl.question("👉 Mau ngapain nih? : ", function (pilih) {
     switch (pilih) {
+    case "0":
+      console.log(`\nHallow ${Wuser}, di Hear Coffe kita punya makanan dan minuman,\n 
+      untuk memesan tekan enter yaa ~\n`);
+
+      seluruhMenu.forEach((item)=>console.log(`Kita punya : ${item.nama} - Rp. ${item.harga}\n`));
+    
+      rl.question("Tekan enter untuk kembali ke menu utama....", function(){menuUtama();});
+      break;
     case "1":
       tampilMenu(Kmenu, "KOPI");
       break;
@@ -61,7 +72,6 @@ export function menuUtama() {
       break;
     case "4":
       checkOut();
-      menuUtama;
       break;
     case "5":
       console.clear();
@@ -76,4 +86,5 @@ export function menuUtama() {
     }
   });
 }
+
 init();
