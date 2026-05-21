@@ -45,8 +45,7 @@ export function tampilMenu(Tmenu, kategori) {
         qty: parseInt(qty),
       });
 
-      console.log(`\n${Tmenu[index].nama} udah masuk keranjang bosz! ⁀➴
-                                        🛒`);
+      console.log(`\n${Tmenu[index].nama} udah masuk keranjang bosz! ⁀➴ 🛒`);
       //menu tambahan untuk memilih selanjutnya mau ngapain
 
       console.log("\n(｡· v ·｡) ?\nMau lanjut apa bosz?\n");
