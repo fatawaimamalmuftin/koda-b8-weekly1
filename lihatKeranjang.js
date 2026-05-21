@@ -59,8 +59,9 @@ export function checkOut() {
     let item = wKeranjang[i];
     let subtotal = item.harga * item.qty;
     total += subtotal;
+    const {nama, qty} = item;
 
-    console.log(`${item.nama} x ${item.qty} = ${subtotal}`);
+    console.log(`${nama} x ${qty} = ${subtotal}`);
   }
   console.log("═══════════════════════════════");
   console.log(`\nTotal : Rp. ${total}\n`);
