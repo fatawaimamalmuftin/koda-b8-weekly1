@@ -1,4 +1,4 @@
-export async function getData() {
+export async function getPromise() {
   try {
     let res = await fetch(
       "https://raw.githubusercontent.com/fatawaimamalmuftin/db.Weekly1/main/db.json",

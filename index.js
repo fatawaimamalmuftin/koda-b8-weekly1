@@ -1,5 +1,5 @@
 import readline from "readline";
-import { getData } from "./db.js";
+import { getPromise } from "./db.js";
 import { lihatKeranjang, checkOut } from "./lihatKeranjang.js";
 import { tampilMenu } from "./menu.js";
 
@@ -16,7 +16,7 @@ let seluruhMenu = [];
 export let Wuser = "";
 
 async function init() {
-  const data = await getData();
+  const data = await getPromise();
   if (!data) {
     console.log("Gagal load data menu.");
     return rl.close();
