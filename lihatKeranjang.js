@@ -67,13 +67,40 @@ export function checkOut() {
   console.log(`\nTotal : Rp. ${total}\n`);
   rl.question("Lanjut Payment bosz?? : y/n ", function (pilih) {
     if (pilih === "y") {
-      console.log("\n🧾 STRUK");
-      console.log(`Nama: ${Wuser}`);
-      console.log("Total: Rp" + total);
-      console.log(`Terima kasih  ${Wuser} ☕`);
-      rl.close();
+      rl.question("Masukin jumlah uang anda bosz : ", function(nominal){
+
+        let tot = parseInt(total);
+        let nom = parseInt(nominal);
+
+        if(isNaN(nom)){
+          console.log("\nmasukin nominal dulu bos ~");
+          return ;
+        }else if(nom !== tot){
+          console.log("\nPembayaran di tolak karna nominal tidak sesuai !!..");
+          return checkOut();
+        }else checkOut();
+
+        if(nom === tot){
+
+          console.log("\n🧾 STRUK PEMBAYARAN\n");
+          for (let i = 0; i < wKeranjang.length; i++) {
+            let item = wKeranjang[i];
+            let subtotal = item.harga * item.qty;
+            total += subtotal;
+            const {nama, qty} = item;
+            console.log(`${nama} x ${qty} = ${subtotal}\n`);}
+          console.log(`Pembayaran atas Nama: ${Wuser}\n   - STASUS LUNAS ✅️ -\n`);
+          console.log("Dengan Total: Rp" + total);
+          console.log(`\nTerima kasih  ${Wuser} ☕\n`);
+          rl.close();
+        }
+
+      });
+      
     } else {
       return menuUtama();
     }
   });
 }
+
+
