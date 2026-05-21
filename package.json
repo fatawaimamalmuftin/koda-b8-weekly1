@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "weekly-koda",
   "version": "1.0.0",
   "description": "Weekly1",
@@ -17,4 +18,15 @@
     "eslint": "^10.4.0",
     "globals": "^17.6.0"
   }
+=======
+  "name": "temp-converter-cli",
+  "version": "0.1.0",
+  "description": "Interactive terminal temperature converter",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["temperature", "converter", "cli", "exercise"],
+  "license": "MIT"
+>>>>>>> fulsep/development
 }
