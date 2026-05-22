@@ -25,7 +25,7 @@ export function lihatKeranjang() {
 
   console.log("1. 🔙 Menu Utama");
   console.log("2. 💳 Checkout sekarang");
-  console.log("3. 🗑️  Hapus atau kurangi Qty pesanan");
+  console.log("3. 🗑️  Hapus pesanan");
 
   rl.question(
     "Mau langsun Payment atau mau tambah pesenan bosz: ",
