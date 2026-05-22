@@ -1,6 +1,6 @@
 import readline from "readline";
 import { getPromise } from "./db.js";
-import { lihatKeranjang, checkOut } from "./lihatKeranjang.js";
+import { lihatKeranjang, checkOut, } from "./lihatKeranjang.js";
 import { tampilMenu } from "./menu.js";
 
 export const rl = readline.createInterface({
