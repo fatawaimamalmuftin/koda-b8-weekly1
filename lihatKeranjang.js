@@ -22,16 +22,16 @@ export function lihatKeranjang() {
     let subtotal = item.harga * item.qty;
     total += subtotal;
 
-    console.log(`${i + 1}. ${item.nama} x ${item.qty} = Rp. ${subtotal}`);
+    console.log(`${i + 1} | ${item.nama} x ${item.qty} = Rp. ${subtotal}`);
   }
 
   //menu navigasi setelah memesan
   console.log("═══════════════════════════════");
   console.log(`\nTotal : Rp. ${total}\n`);
 
-  console.log("1. 🔙 Menu Utama");
-  console.log("2. 💳 Checkout sekarang");
-  console.log("3. 🗑️  Hapus pesanan");
+  console.log("1 | 🔙 Menu Utama");
+  console.log("2 | 💳 Checkout sekarang");
+  console.log("3 | 🗑️  Hapus pesanan");
 
   rl.question(
     "Mau langsun Payment atau mau tambah pesenan bosz: ",
@@ -77,7 +77,7 @@ export function checkOut() {
     total += subtotal;
     const {nama, qty} = item;
 
-    console.log(`${i + 1}. ${nama} x ${qty} = ${subtotal}`);
+    console.log(`${i + 1} | ${nama} x ${qty} = ${subtotal}`);
   }
 
   //rencananya ini mau di kembangkan menjadi struk pembelian
@@ -87,10 +87,25 @@ export function checkOut() {
   rl.question("Lanjut Payment bosz?? : y/n ", function (pilih) {
 
     if (pilih === "y") {
+      console.clear();
+      
       console.log("\n🧾 STRUK");
-      console.log(`Nama: ${Wuser}`);
-      console.log("Total: Rp" + total);
-      console.log(`Terima kasih  ${Wuser} ☕`);
+      console.log("═══════════════════════════════");
+
+      for (let i = 0; i < wKeranjang.length; i++) {
+        let item = wKeranjang[i];
+        let subtotal = item.harga * item.qty;
+        total += subtotal;
+        const {nama, qty} = item;
+
+        console.log(`${i + 1} | ${nama} x ${qty} = ${subtotal} `);
+        console.log("-------------------------------");
+      }
+      console.log("\nStatus pembayaran " + Wuser + " LUNAS ✅️");
+      console.log("═══════════════════════════════");
+
+
+      console.log(`\nTerima kasih  ${Wuser} ☕`);
       rl.close();
 
     } else {

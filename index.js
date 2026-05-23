@@ -43,12 +43,12 @@ export function menuUtama() {
   console.log("═══════════════════════════════");
   console.log("☕︎        HEAR COFFEE         ☕︎");
   console.log("═══════════════════════════════");
-  console.log("0. 𐦂𖨆𐀪𖠋 Liat semua menu dulu sebelum milih boleh di sini yaa 𐦂𖨆𐀪𖠋");
-  console.log("1. ☕ Pesan Kopi");
-  console.log("2. 🍔 Pesan Disert");
-  console.log("3. 🛒 Lihat Keranjang");
-  console.log("4. 💳 Checkout");
-  console.log("5. 🚪 Exit");
+  console.log("0 | 𐦂𖨆𐀪𖠋 Liat semua menu dulu sebelum milih boleh di sini yaa 𐦂𖨆𐀪𖠋");
+  console.log("1 | ☕ Pesan Kopi");
+  console.log("2 | 🍔 Pesan Disert");
+  console.log("3 | 🛒 Lihat Keranjang");
+  console.log("4 | 💳 Checkout");
+  console.log("5 | 🚪 Exit");
   console.log("═══════════════════════════════");
   
   //pakai switch untuk memilih kodisi yg ingin di jalankan
