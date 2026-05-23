@@ -27,16 +27,16 @@ async function init() {
 
   console.clear();
 
+  //meminta nama yg menjalani sistem
   rl.question(`👤 Masukan Nama ${Wuser} dulu ya : `, function (nama) {
     Wuser = nama;
+    
     //ini fungsinya biar tampilan lebih clean, setiap menjalankan proses menghapus riwayat tampilan sebelumnya
     console.clear();
     console.log(`\nHai ${Wuser}, selamat datang di Hear Coffee ☕︎.ᐟ\n`);
     menuUtama();
   });
 }
-
-//meminta nama yg menjalani sistem
 
 //Bikin menu utama
 export function menuUtama() {
@@ -50,28 +50,32 @@ export function menuUtama() {
   console.log("4. 💳 Checkout");
   console.log("5. 🚪 Exit");
   console.log("═══════════════════════════════");
-  //pakai switch untuk memilih kodisi yg ingin di jalankan. masih rencana ga tau dah entar jadi kaya gmana ini muftinnnn
+  
+  //pakai switch untuk memilih kodisi yg ingin di jalankan
   rl.question("👉 Mau ngapain nih? : ", function (pilih) {
     switch (pilih) {
     case "0":
       console.log(`\nHallow ${Wuser}, di Hear Coffe kita punya makanan dan minuman 🍝🍜👩🏻‍🍳🥘🤌🏻`);
-
-      seluruhMenu.forEach((item)=>console.log(`Kita punya : ${item.nama} - Rp. ${item.harga}\n`));
-    
+      seluruhMenu.forEach((item)=>console.log(`Kita punya : ${item.nama} - Rp. ${item.harga}\n`));    
       rl.question("Tekan enter untuk memesan ....↩", function(){menuUtama();});
       break;
+
     case "1":
       tampilMenu(Kmenu, "KOPI ☕︎ྀི");
       break;
+
     case "2":
       tampilMenu(Dmenu, "DISERT 𐂐◯𓇋");
       break;
+
     case "3":
       lihatKeranjang();
       break;
+
     case "4":
       checkOut();
       break;
+
     case "5":
       console.clear();
       console.log(
@@ -79,6 +83,7 @@ export function menuUtama() {
       );
       rl.close();
       break;
+
     default:
       menuUtama();
       break;

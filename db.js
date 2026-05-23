@@ -1,3 +1,4 @@
+//asyncrhorous hendling, fetching data dari github
 export async function getPromise() {
   try {
     let res = await fetch(

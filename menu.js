@@ -4,9 +4,12 @@ import {
 } from "./lihatKeranjang.js";
 import { Wuser, menuUtama,rl } from "./index.js";
 
+//menampilkan menu sesuai argumen parameter yg di kirimkan
 export function tampilMenu(Tmenu, kategori) {
+
   //ini fungsinya biar tampilan lebih clean, setiap menjalankan proses menghapus riwayat tampilan sebelumnya
   console.clear();
+
   console.log(`\n☕︎ Menu ${kategori} ✎﹏﹏\n`);
 
   //melooping seluruh isi dari variabel Tmenu. sekarang belum di buat variabelnya
@@ -17,12 +20,13 @@ export function tampilMenu(Tmenu, kategori) {
   console.log(`\n0. 🔙 Balik dulss..`); // ini ceritanya balik ke menu utama
 
   rl.question("\nAyow silahkan di pilih sesuai nomor : ", function (pilih) {
-    //validasi input
-    //kalo pilih 0 balik ke menu utama
-    if (pilih === "0") return menuUtama();
+    const num = parseInt(pilih);
+
+    //validasi input kalo pilih 0 balik ke menu utama
+    if (num === "0") return menuUtama();
 
     //kalo inputan kosong, inputan 0, inputan lebih dari isi menu
-    if (isNaN(pilih) || pilih < 1 || pilih > Tmenu.length) {
+    if (isNaN(num) || num < 1 || num > Tmenu.length) {
       //bakal ngeluarin ini
       console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
       //dan ke tampilan sesuai tipe menu apa yg di jalankan sebelumnya
@@ -30,13 +34,15 @@ export function tampilMenu(Tmenu, kategori) {
     }
 
     //ini untuk menyamakan angka inputan dengan index
-    let index = pilih - 1;
+    let index = num - 1;
+
     //masukin qty yg mau di beli
     rl.question("👉 Mau berapa bosz?? ", function (qty) {
       if (isNaN(qty) || qty <= 0) {
         console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
         return tampilMenu(Tmenu, kategori);
       }
+      
       //ini masukan nama menu dan harga menu ke keranjang dan urutannya menjadi sesuai index array
       wKeranjang.push({
         nama: Tmenu[index].nama,
