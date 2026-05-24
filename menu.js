@@ -20,13 +20,11 @@ export function tampilMenu(Tmenu, kategori) {
   console.log(`\n0. 🔙 Balik dulss..`); // ini ceritanya balik ke menu utama
 
   rl.question("\nAyow silahkan di pilih sesuai nomor : ", function (pilih) {
-    const num = parseInt(pilih);
-
     //validasi input kalo pilih 0 balik ke menu utama
-    if (num === "0") return menuUtama();
+    if (pilih === "0") return menuUtama();
 
     //kalo inputan kosong, inputan 0, inputan lebih dari isi menu
-    if (isNaN(num) || num < 1 || num > Tmenu.length) {
+    if (isNaN(pilih) || pilih < 1 || pilih > Tmenu.length) {
       //bakal ngeluarin ini
       console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
       //dan ke tampilan sesuai tipe menu apa yg di jalankan sebelumnya
@@ -34,6 +32,7 @@ export function tampilMenu(Tmenu, kategori) {
     }
 
     //ini untuk menyamakan angka inputan dengan index
+    const num = parseInt(pilih);
     let index = num - 1;
 
     //masukin qty yg mau di beli
