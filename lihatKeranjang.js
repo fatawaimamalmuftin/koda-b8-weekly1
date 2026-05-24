@@ -31,30 +31,28 @@ export function lihatKeranjang() {
 
   console.log("1 | 🔙 Menu Utama");
   console.log("2 | 💳 Checkout sekarang");
-  console.log("3 | 🗑️  Hapus pesanan");
+  console.log("3 | ⚙️  Modify pesanan");
 
-  rl.question(
-    "Mau langsun Payment atau mau tambah pesenan bosz: ",
-    function (piih) {
-      switch (piih) {
-      case "1":
-        menuUtama();
-        break;
+  rl.question("Mau langsun Payment atau mau tambah pesenan bosz: ",function (piih) {
+    switch (piih) {
+    case "1":
+      menuUtama();
+      break;
 
-      case "2":
-        checkOut();
-        break;
+    case "2":
+      checkOut();
+      break;
 
-      case "3":
-        delPes();
-        break;
+    case "3":
+      editPesanan();
+      break;
 
-      default:
-        console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
-        menuUtama();
-        break;
-      }
-    },
+    default:
+      console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
+      menuUtama();
+      break;
+    }
+  },
   );
 }
 
@@ -114,12 +112,62 @@ export function checkOut() {
   });
 }
 
-//proses menghapus pesanan sesuai nomor pesanans
+function editPesanan(){
+  console.log("═══════════════════════════════");
+  console.log("1 | 🗑️  Hapus pesanan");
+  console.log("2 | ➖ Kurangin Qty");
+  console.log("═══════════════════════════════");
+  rl.question("Mau hapus pesanan atau kurangin Qty?? : ", function(pilih){
+    if( isNaN(pilih) || pilih < 1 || pilih > 2 ){
+      console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
+      return editPesanan();
+    };
+
+    switch(pilih){
+    case "1":
+      delPes();
+      break;
+    case "2":
+      kurQty();
+      break;
+    default:
+      editPesanan();
+      break;
+    }
+  });
+}
+
+// proses menghapus pesanan sesuai nomor pesanans
 function delPes(){
   rl.question("Mau hapus nomor brapa bosz??.. : ",function(pilih){
     let num = pilih - 1;
+    if(isNaN(pilih ) || pilih < wKeranjang.length || pilih < wKeranjang.length){
+      console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
+      return delPes();
+    };
     wKeranjang.splice(num, 1);
-    console.log("🗑️ ⬅ Berhasil di hapus dari keranjang bosz " + Wuser);
+    console.log("🗑️ ⬅ Berhasil di hapus dari keranjang bosz !!" + Wuser);
     lihatKeranjang();
   });
 };
+
+let minqty = [];
+function kurQty(){
+  rl.question("Mau kurangin nomor berapa bosz ❓ : ", function (pilih){
+    const num = pilih - 1;
+    if( isNaN(pilih) || pilih < wKeranjang.length || pilih < wKeranjang.length){
+      console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
+      return kurQty();
+    };
+    minqty = wKeranjang[num];
+    rl.question("Kurangin brapa bosz ❓ :",function (kurang){
+      const number = parseInt(kurang);
+      if( isNaN(number) || number < wKeranjang.length || number < wKeranjang.length){
+        console.log(`❌ Pilihannya ga ada loh ${Wuser}（ꐦ𝅒_𝅒)`);
+        return kurQty();
+      };
+      minqty.qty -= number;
+      lihatKeranjang();
+    });
+  });  
+}
