@@ -1,2 +1,6 @@
 membuat file .json di repo untuk di fetching ke vscode
 sebelum di fetching link harus di raw dulu : https://raw.githubusercontent.com/fatawaimamalmuftin/db.Weekly1/main/db.json
+
+1. membuat JSDocs
+2. membuat unit testing
+3. dengan target 80 - 100%
