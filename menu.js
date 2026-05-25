@@ -4,6 +4,24 @@ import {
 } from "./lihatKeranjang.js";
 import { Wuser, menuUtama,rl } from "./index.js";
 
+/**
+ * Menampilkan daftar menu berdasarkan kategori yang dipilih Wuser
+ * lalu menangani proses pemilihan menu, quantity, dan keranjang belanja.
+ *
+ * @param {Array<{nama: string, harga: number}>} Tmenu
+ * Array daftar menu yang akan ditampilkan (contoh: menu kopi atau dessert)
+ *
+ * @param {string} kategori
+ * Nama kategori menu yang sedang ditampilkan (contoh: "Kopi", "Dessert")
+ *
+ * @returns {void}
+ * Tidak mengembalikan nilai karena hanya jalan di CLI
+ *
+ * @sideEffect
+ * - Mengubah isi wKeranjang (push item)
+ * - Mengubah alur program ke menuUtama.js / lihatKeranjang.js / checkout.js
+ */
+
 //menampilkan menu sesuai argumen parameter yg di kirimkan
 export function tampilMenu(Tmenu, kategori) {
 
