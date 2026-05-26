@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert";
-import { getPromise } from "../db.js"
+import { getPromise } from "../db.js";
 
 test("fetch berhasil", async () => {
   global.fetch = async () => ({
