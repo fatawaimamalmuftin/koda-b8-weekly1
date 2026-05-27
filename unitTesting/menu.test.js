@@ -1,7 +1,11 @@
 import test from "node:test";
 import assert from "node:assert";
+<<<<<<< HEAD
 import { validasiPilihanMenu, validasiQty, tambahKeKeranjang } from "../menu.js";
 import { wKeranjang } from "../lihatKeranjang.js";
+=======
+import { getPromise } from "../db.js";
+>>>>>>> refactor
 
 /* =========================
    DUMMY DATA
