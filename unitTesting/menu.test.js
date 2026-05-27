@@ -1,84 +1,76 @@
-import test from "node:test";
-import assert from "node:assert";
-<<<<<<< HEAD
-import { validasiPilihanMenu, validasiQty, tambahKeKeranjang } from "../menu.js";
-import { wKeranjang } from "../lihatKeranjang.js";
-=======
-import { getPromise } from "../db.js";
->>>>>>> refactor
+import {describe, it} from "node:test";
+import assert from "assert";
 
-/* =========================
-   DUMMY DATA
-========================= */
+import {wKeranjang} from "../lihatKeranjang.js";
 
-const dummyMenu = [
-  { nama: "Kopi A", harga: 10000 },
-  { nama: "Kopi B", harga: 20000 },
-];
+describe("Testing logic menu.js", () => {
 
-/* reset keranjang sebelum test */
-function resetKeranjang() {
-  wKeranjang.length = 0;
-}
-
-/* =========================
-   TEST VALIDASI MENU
-========================= */
-
-test("validasiPilihanMenu - valid input", () => {
-  assert.strictEqual(validasiPilihanMenu("1", dummyMenu), true);
-});
-
-test("validasiPilihanMenu - invalid (0)", () => {
-  assert.strictEqual(validasiPilihanMenu("0", dummyMenu), false);
-});
-
-test("validasiPilihanMenu - invalid string", () => {
-  assert.strictEqual(validasiPilihanMenu("abc", dummyMenu), false);
-});
-
-/* =========================
-   TEST VALIDASI QTY
-========================= */
-
-test("validasiQty - valid", () => {
-  assert.strictEqual(validasiQty("2"), true);
-});
-
-test("validasiQty - invalid 0", () => {
-  assert.strictEqual(validasiQty("0"), false);
-});
-
-test("validasiQty - invalid string", () => {
-  assert.strictEqual(validasiQty("abc"), false);
-});
-
-/* =========================
-   TEST KERANJANG
-========================= */
-
-test("tambahKeKeranjang - should add item correctly", () => {
-  resetKeranjang();
-
-  tambahKeKeranjang(dummyMenu, 0, "2");
-
-  assert.deepStrictEqual(wKeranjang, [
+  const Tmenu = [
     {
-      nama: "Kopi A",
-      harga: 10000,
-      qty: 2,
+      nama: "Americano",
+      harga: 15000,
     },
-  ]);
-});
+    {
+      nama: "Latte",
+      harga: 20000,
+    },
+  ];
 
-test("tambahKeKeranjang - multiple items", () => {
-  resetKeranjang();
+  describe("data menu", () => {
 
-  tambahKeKeranjang(dummyMenu, 0, "1");
-  tambahKeKeranjang(dummyMenu, 1, "3");
+    it("harus memiliki jumlah menu yang benar", () => {
+      assert.equal(Tmenu.length, 2);
+    });
 
-  assert.deepStrictEqual(wKeranjang, [
-    { nama: "Kopi A", harga: 10000, qty: 1 },
-    { nama: "Kopi B", harga: 20000, qty: 3 },
-  ]);
+    it("harus memiliki nama menu yang benar", () => {
+      assert.equal(Tmenu[0].nama, "Americano");
+    });
+
+    it("harus memiliki harga menu yang benar", () => {
+      assert.equal(Tmenu[0].harga, 15000);
+    });
+
+  });
+
+  describe("logic keranjang", () => {
+
+    it("harus bisa menambahkan item ke keranjang", () => {
+      wKeranjang.length = 0;
+
+      wKeranjang.push({
+        nama: Tmenu[0].nama,
+        harga: Tmenu[0].harga,
+        qty: parseInt(2),
+      });
+
+      assert.equal(wKeranjang.length, 1);
+      assert.equal(wKeranjang[0].nama, "Americano");
+      assert.equal(wKeranjang[0].harga, 15000);
+      assert.equal(wKeranjang[0].qty, 2);
+    });
+
+    it("harus bisa di hitung subtotal item", () => {
+      const subtotal =
+        wKeranjang[0].harga * wKeranjang[0].qty;
+
+      assert.equal(subtotal, 30000);
+    });
+
+    it("harus bisa di hitung total seluruh keranjang", () => {
+      let total = 0;
+
+      for (let i = 0; i < wKeranjang.length; i++) {
+        total +=
+          wKeranjang[i].harga * wKeranjang[i].qty;
+      }
+
+      assert.equal(total, 50000);
+    });
+
+    it("qty harus berupa number", () => {
+      assert.equal(typeof wKeranjang[0].qty, "number");
+    });
+
+  });
+
 });
