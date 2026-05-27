@@ -6,17 +6,11 @@ import {
 
 import { Wuser, menuUtama, rl } from "./index.js";
 
-// =========================
-// MAIN FUNCTION
-// =========================
 export function tampilMenu(Tmenu, kategori) {
   renderMenu(Tmenu, kategori);
   handleMenuInput(Tmenu, kategori);
 }
 
-// =========================
-// RENDER MENU
-// =========================
 function renderMenu(Tmenu, kategori) {
   console.clear();
 
@@ -29,9 +23,6 @@ function renderMenu(Tmenu, kategori) {
   console.log(`\n0. 🔙 Balik dulss..`);
 }
 
-// =========================
-// HANDLE PILIH MENU
-// =========================
 function handleMenuInput(Tmenu, kategori) {
   rl.question("\nAyow silahkan di pilih sesuai nomor : ", function (pilih) {
     if (pilih === "0") return menuUtama();
@@ -47,9 +38,6 @@ function handleMenuInput(Tmenu, kategori) {
   });
 }
 
-// =========================
-// HANDLE QTY INPUT
-// =========================
 function handleQtyInput(Tmenu, kategori, index) {
   rl.question("👉 Mau berapa bosz?? ", function (qty) {
     if (isNaN(qty) || qty <= 0) {
@@ -63,9 +51,6 @@ function handleQtyInput(Tmenu, kategori, index) {
   });
 }
 
-// =========================
-// ADD TO KERANJANG
-// =========================
 function addToKeranjang(Tmenu, index, qty) {
   wKeranjang.push({
     nama: Tmenu[index].nama,
@@ -76,9 +61,6 @@ function addToKeranjang(Tmenu, index, qty) {
   console.log(`\n${Tmenu[index].nama} udah masuk keranjang bosz! ⁀➴ 🛒`);
 }
 
-// =========================
-// MENU LANJUTAN
-// =========================
 function showNextAction(Tmenu, kategori) {
   console.log("\n(｡· v ·｡) ?\nMau lanjut apa bosz?\n");
   console.log("1. ➕ Tambah lagi");
@@ -91,9 +73,6 @@ function showNextAction(Tmenu, kategori) {
   });
 }
 
-// =========================
-// HANDLE ACTION
-// =========================
 function handleNextAction(pilih, Tmenu, kategori) {
   switch (pilih) {
   case "1":

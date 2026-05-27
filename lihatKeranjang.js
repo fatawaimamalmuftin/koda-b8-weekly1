@@ -1,13 +1,7 @@
 import { menuUtama, Wuser, rl } from "./index.js";
 
-// =========================
-// DATA
-// =========================
 export let wKeranjang = [];
 
-// =========================
-// MAIN VIEW
-// =========================
 export function lihatKeranjang() {
   console.clear();
   renderKeranjang();
@@ -21,9 +15,6 @@ export function lihatKeranjang() {
   handleMenuKeranjang();
 }
 
-// =========================
-// RENDER KERANJANG
-// =========================
 function renderKeranjang() {
   console.log(`\n🛒 Keranjang ${Wuser} ✎﹏﹏\n`);
 
@@ -41,9 +32,6 @@ function renderKeranjang() {
   console.log(`\nTotal : Rp. ${total}\n`);
 }
 
-// =========================
-// MENU KERANJANG
-// =========================
 function renderMenuKeranjang() {
   console.log("1 | 🔙 Menu Utama");
   console.log("2 | 💳 Checkout sekarang");
@@ -73,9 +61,6 @@ function handleMenuKeranjang() {
   );
 }
 
-// =========================
-// CHECKOUT
-// =========================
 export function checkOut() {
   console.clear();
 
@@ -139,9 +124,6 @@ function handleCheckoutConfirm() {
   });
 }
 
-// =========================
-// EDIT PESANAN
-// =========================
 function editPesanan() {
   console.log("═══════════════════════════════");
   console.log("1 | 🗑️  Hapus pesanan");
@@ -172,9 +154,6 @@ function handleEditMenu() {
   });
 }
 
-// =========================
-// DELETE PESANAN
-// =========================
 function delPes() {
   rl.question("Mau hapus nomor brapa bosz??.. : ", function (pilih) {
     const num = pilih - 1;
@@ -195,9 +174,6 @@ function delPes() {
   });
 }
 
-// =========================
-// KURANG QTY
-// =========================
 function kurQty() {
   rl.question("Mau kurangin nomor berapa bosz ❓ : ", function (pilih) {
     const num = pilih - 1;

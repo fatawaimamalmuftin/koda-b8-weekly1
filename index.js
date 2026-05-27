@@ -15,9 +15,6 @@ export let Wuser = "";
 
 init();
 
-// =========================
-// INIT APP
-// =========================
 async function init() {
   const data = await getPromise();
 
@@ -30,18 +27,12 @@ async function init() {
   askNamaUser();
 }
 
-// =========================
-// SET DATA MENU
-// =========================
 function setMenu(data) {
   Kmenu = data.menuKopi;
   Dmenu = data.menuDesert;
   seluruhMenu = [...Dmenu, ...Kmenu];
 }
 
-// =========================
-// INPUT NAMA USER
-// =========================
 function askNamaUser() {
   console.clear();
 
@@ -55,9 +46,6 @@ function askNamaUser() {
   });
 }
 
-// =========================
-// MENU UTAMA
-// =========================
 export function menuUtama() {
   console.log("═══════════════════════════════");
   console.log("☕︎        HEAR COFFEE         ☕︎");
@@ -74,18 +62,12 @@ export function menuUtama() {
   handleMenu();
 }
 
-// =========================
-// HANDLE INPUT MENU
-// =========================
 function handleMenu() {
   rl.question("👉 Mau ngapain nih? : ", function (pilih) {
     processMenu(pilih);
   });
 }
 
-// =========================
-// PROCESS MENU
-// =========================
 function processMenu(pilih) {
   switch (pilih) {
   case "0":
@@ -118,9 +100,6 @@ function processMenu(pilih) {
   }
 }
 
-// =========================
-// SHOW ALL MENU
-// =========================
 function showAllMenu() {
   console.clear();
   console.log(`\nHallow ${Wuser}, di Hear Coffe kita punya makanan dan minuman 🍝🍜👩🏻‍🍳🥘🤌🏻`);
@@ -134,9 +113,6 @@ function showAllMenu() {
   });
 }
 
-// =========================
-// EXIT APP
-// =========================
 function exitApp() {
   console.clear();
 
