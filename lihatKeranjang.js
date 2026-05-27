@@ -1,7 +1,25 @@
 import { menuUtama, Wuser, rl } from "./index.js";
 
+/**
+ * State global keranjang user (mutable).
+ * Berisi item belanja yang dipilih user.
+ *
+ * @type {Array<{nama: string, harga: number, qty: number}>}
+ */
 export let wKeranjang = [];
 
+/**
+ * Menampilkan isi keranjang belanja user.
+ *
+ * Flow:
+ * - clear terminal
+ * - render isi keranjang
+ * - jika kosong → kembali ke menu utama
+ * - jika tidak kosong → tampilkan opsi keranjang
+ *
+ * @function lihatKeranjang
+ * @returns {void}
+ */
 export function lihatKeranjang() {
   console.clear();
   renderKeranjang();
@@ -15,6 +33,16 @@ export function lihatKeranjang() {
   handleMenuKeranjang();
 }
 
+/**
+ * Render daftar item dalam keranjang + total harga.
+ *
+ * Side effect:
+ * - membaca state global wKeranjang
+ * - menghitung total belanja
+ *
+ * @function renderKeranjang
+ * @returns {void}
+ */
 function renderKeranjang() {
   console.log(`\n🛒 Keranjang ${Wuser} ✎﹏﹏\n`);
 
@@ -32,12 +60,24 @@ function renderKeranjang() {
   console.log(`\nTotal : Rp. ${total}\n`);
 }
 
+/**
+ * Menampilkan opsi aksi pada keranjang.
+ *
+ * @function renderMenuKeranjang
+ * @returns {void}
+ */
 function renderMenuKeranjang() {
   console.log("1 | 🔙 Menu Utama");
   console.log("2 | 💳 Checkout sekarang");
   console.log("3 | ⚙️  Modify pesanan");
 }
 
+/**
+ * Menangani input user pada menu keranjang.
+ *
+ * @function handleMenuKeranjang
+ * @returns {void}
+ */
 function handleMenuKeranjang() {
   rl.question(
     "Mau langsun Payment atau mau tambah pesenan bosz: ",
@@ -61,6 +101,17 @@ function handleMenuKeranjang() {
   );
 }
 
+/**
+ * Proses checkout transaksi user.
+ *
+ * Flow:
+ * - validasi keranjang
+ * - render struk
+ * - konfirmasi pembayaran
+ *
+ * @function checkOut
+ * @returns {void}
+ */
 export function checkOut() {
   console.clear();
 
@@ -73,6 +124,15 @@ export function checkOut() {
   handleCheckoutConfirm();
 }
 
+/**
+ * Render struk pembayaran checkout.
+ *
+ * Side effect:
+ * - menghitung total belanja
+ *
+ * @function renderCheckout
+ * @returns {number} total - total harga belanja user
+ */
 function renderCheckout() {
   let total = 0;
 
@@ -94,6 +154,12 @@ function renderCheckout() {
   return total;
 }
 
+/**
+ * Konfirmasi pembayaran user setelah checkout.
+ *
+ * @function handleCheckoutConfirm
+ * @returns {void}
+ */
 function handleCheckoutConfirm() {
   rl.question("Lanjut Payment bosz?? : y/n ", function (pilih) {
     if (pilih === "y") {
@@ -124,6 +190,12 @@ function handleCheckoutConfirm() {
   });
 }
 
+/**
+ * Menampilkan menu edit keranjang.
+ *
+ * @function editPesanan
+ * @returns {void}
+ */
 function editPesanan() {
   console.log("═══════════════════════════════");
   console.log("1 | 🗑️  Hapus pesanan");
@@ -133,6 +205,12 @@ function editPesanan() {
   handleEditMenu();
 }
 
+/**
+ * Menangani input menu edit keranjang.
+ *
+ * @function handleEditMenu
+ * @returns {void}
+ */
 function handleEditMenu() {
   rl.question("Mau hapus pesanan atau kurangin Qty?? : ", function (pilih) {
     if (isNaN(pilih) || pilih < 1 || pilih > 2) {
@@ -154,6 +232,15 @@ function handleEditMenu() {
   });
 }
 
+/**
+ * Menghapus item dari keranjang berdasarkan index.
+ *
+ * Side effect:
+ * - memodifikasi array wKeranjang (splice)
+ *
+ * @function delPes
+ * @returns {void}
+ */
 function delPes() {
   rl.question("Mau hapus nomor brapa bosz??.. : ", function (pilih) {
     const num = pilih - 1;
@@ -174,6 +261,17 @@ function delPes() {
   });
 }
 
+/**
+ * Mengurangi jumlah quantity item di keranjang.
+ *
+ * Flow:
+ * - pilih item
+ * - input jumlah pengurangan
+ * - update qty atau hapus jika <= 0
+ *
+ * @function kurQty
+ * @returns {void}
+ */
 function kurQty() {
   rl.question("Mau kurangin nomor berapa bosz ❓ : ", function (pilih) {
     const num = pilih - 1;

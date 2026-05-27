@@ -3,16 +3,48 @@ import { getPromise } from "./db.js";
 import { lihatKeranjang, checkOut } from "./lihatKeranjang.js";
 import { tampilMenu } from "./menu.js";
 
+/**
+ * Interface readline untuk input CLI user.
+ * @type {readline.Interface}
+ */
 export const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
+/**
+ * Menu kopi yang tersedia.
+ * @type {Array<Object>}
+ */
 export let Kmenu = [];
+
+/**
+ * Menu dessert yang tersedia.
+ * @type {Array<Object>}
+ */
 export let Dmenu = [];
+
+/**
+ * Gabungan semua menu (kopi + dessert).
+ * @type {Array<Object>}
+ */
 export let seluruhMenu = [];
+
+/**
+ * Nama user yang sedang menggunakan aplikasi.
+ * @type {string}
+ */
 export let Wuser = "";
 
+/**
+ * Inisialisasi aplikasi:
+ * - mengambil data menu dari database
+ * - set menu ke state global
+ * - meminta input nama user
+ * @async
+ * @function init
+ * @returns {Promise<void>}
+ */
 init();
 
 async function init() {
@@ -27,12 +59,28 @@ async function init() {
   askNamaUser();
 }
 
+/**
+ * Menyimpan data menu ke state global aplikasi.
+ *
+ * @function setMenu
+ * @param {Object} data - Data menu dari database
+ * @param {Array<Object>} data.menuKopi - List menu kopi
+ * @param {Array<Object>} data.menuDesert - List menu dessert
+ * @returns {void}
+ */
 function setMenu(data) {
   Kmenu = data.menuKopi;
   Dmenu = data.menuDesert;
   seluruhMenu = [...Dmenu, ...Kmenu];
 }
 
+/**
+ * Meminta input nama user melalui CLI.
+ * Setelah itu lanjut ke menu utama.
+ *
+ * @function askNamaUser
+ * @returns {void}
+ */
 function askNamaUser() {
   console.clear();
 
@@ -46,6 +94,12 @@ function askNamaUser() {
   });
 }
 
+/**
+ * Menampilkan menu utama aplikasi CLI.
+ *
+ * @function menuUtama
+ * @returns {void}
+ */
 export function menuUtama() {
   console.log("═══════════════════════════════");
   console.log("☕︎        HEAR COFFEE         ☕︎");
@@ -62,12 +116,25 @@ export function menuUtama() {
   handleMenu();
 }
 
+/**
+ * Menangani input pilihan menu user.
+ *
+ * @function handleMenu
+ * @returns {void}
+ */
 function handleMenu() {
   rl.question("👉 Mau ngapain nih? : ", function (pilih) {
     processMenu(pilih);
   });
 }
 
+/**
+ * Mengeksekusi pilihan menu user.
+ *
+ * @function processMenu
+ * @param {string} pilih - Input pilihan menu dari user
+ * @returns {void}
+ */
 function processMenu(pilih) {
   switch (pilih) {
   case "0":
@@ -100,6 +167,12 @@ function processMenu(pilih) {
   }
 }
 
+/**
+ * Menampilkan seluruh menu (kopi + dessert).
+ *
+ * @function showAllMenu
+ * @returns {void}
+ */
 function showAllMenu() {
   console.clear();
   console.log(`\nHallow ${Wuser}, di Hear Coffe kita punya makanan dan minuman 🍝🍜👩🏻‍🍳🥘🤌🏻`);
@@ -113,11 +186,17 @@ function showAllMenu() {
   });
 }
 
+/**
+ * Menutup aplikasi CLI dan keluar dari program.
+ *
+ * @function exitApp
+ * @returns {void}
+ */
 function exitApp() {
   console.clear();
 
   console.log(
-    "\n✎ᝰ. Terima Kasih ( ๑ ˃̵ᴗ˂̵)و ♡\nDi tunggu kembali kedatanganya... ☕\n𐦂𖨆𐀪𖠋𐀪𐀪 𓆝 𓆟 𓆞 ✌︎︎"
+    "\n✎ᝰ. Terima Kasih ( ๑ ˃̵ᴗ˂̵)و ♡\nDi tunggu kembali kedatanganya... ☕\n𐦂𖨆𐀪𐀪 𓆝 𓆟 𓆞 ✌︎︎"
   );
 
   rl.close();
