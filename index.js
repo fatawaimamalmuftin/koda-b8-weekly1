@@ -56,7 +56,6 @@ async function init() {
   }
 
   setMenu(data);
-  askNamaUser();
 }
 
 /**
@@ -72,6 +71,7 @@ function setMenu(data) {
   Kmenu = data.menuKopi;
   Dmenu = data.menuDesert;
   seluruhMenu = [...Dmenu, ...Kmenu];
+  askNamaUser();
 }
 
 /**
@@ -201,3 +201,5 @@ function exitApp() {
 
   rl.close();
 }
+
+export { setMenu, processMenu, showAllMenu, exitApp };

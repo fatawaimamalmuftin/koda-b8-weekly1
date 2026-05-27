@@ -49,6 +49,7 @@ export async function getPromise() {
     const res = await ambilResponse();
     return await ambilJson(res);
   } catch (error) {
-    return console.log(error);
+    console.log(error);
+    return null;
   }
 }
