@@ -4,3 +4,9 @@ sebelum di fetching link harus di raw dulu : https://raw.githubusercontent.com/f
 1. membuat JSDocs
 2. membuat unit testing
 3. dengan target 80 - 100%
+
+
+home work
+menambahkan JSDocs ke node1 dan node2
+
+yg di testing itu core logika function, yg berhubungan dengan tampilan ga perluPP

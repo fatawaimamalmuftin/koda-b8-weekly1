@@ -8,11 +8,11 @@
   "main": "index.js",
   "scripts": {
     "test": "node --test",
-    "test:watch" : "node --test --watch",
-    "test:coverage" : "node --test --experimental-test-coverage",
+    "test:watch": "node --test --watch",
+    "test:coverage": "node --test --experimental-test-coverage",
     "dev": "node --watch index.js",
-    "lint": "npx eslint ./index.js ./lihatKeranjang.js ./menu.js ./db.js",
-    "lint:fix": "npx eslint ./index.js ./lihatKeranjang.js ./menu.js ./db.js --fix"
+    "lint": "npx eslint ./index.js ./lihatKeranjang.js ./menu.js ./db.js ./unitTesting/db.test.js ./unitTesting/menu.test.js",
+    "lint:fix": "npx eslint ./index.js ./lihatKeranjang.js ./menu.js ./db.js ./unitTesting/db.test.js ./unitTesting/menu.test.js --fix "
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
