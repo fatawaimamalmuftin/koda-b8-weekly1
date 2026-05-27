@@ -4,7 +4,7 @@ import { lihatKeranjang, checkOut } from "./lihatKeranjang.js";
 import { tampilMenu } from "./menu.js";
 
 /**
- * Interface readline untuk input CLI user.
+ * Interface readline untuk input CLI user
  * @type {readline.Interface}
  */
 export const rl = readline.createInterface({
@@ -13,25 +13,25 @@ export const rl = readline.createInterface({
 });
 
 /**
- * Menu kopi yang tersedia.
+ * Menu kopi yang
  * @type {Array<Object>}
  */
 export let Kmenu = [];
 
 /**
- * Menu dessert yang tersedia.
+ * Menu dessert yang
  * @type {Array<Object>}
  */
 export let Dmenu = [];
 
 /**
- * Gabungan semua menu (kopi + dessert).
+ * Gabungan semua menu kopi + dessert
  * @type {Array<Object>}
  */
 export let seluruhMenu = [];
 
 /**
- * Nama user yang sedang menggunakan aplikasi.
+ * Nama user yang sedang menggunakan aplikasi
  * @type {string}
  */
 export let Wuser = "";
@@ -39,7 +39,7 @@ export let Wuser = "";
 /**
  * Inisialisasi aplikasi:
  * - mengambil data menu dari database
- * - set menu ke state global
+ * - set menu ke variabel global
  * - meminta input nama user
  * @async
  * @function init
@@ -60,12 +60,12 @@ async function init() {
 }
 
 /**
- * Menyimpan data menu ke state global aplikasi.
+ * Menyimpan data menu ke variabel global aplikasi
  *
  * @function setMenu
- * @param {Object} data - Data menu dari database
- * @param {Array<Object>} data.menuKopi - List menu kopi
- * @param {Array<Object>} data.menuDesert - List menu dessert
+ * @param {Object} data Data menu dari database
+ * @param {Array<Object>} data.menuKopi List menu kopi
+ * @param {Array<Object>} data.menuDesert List menu dessert
  * @returns {void}
  */
 function setMenu(data) {
@@ -75,8 +75,8 @@ function setMenu(data) {
 }
 
 /**
- * Meminta input nama user melalui CLI.
- * Setelah itu lanjut ke menu utama.
+ * Meminta input nama user melalui CLI
+ * Setelah itu lanjut ke function menu utama
  *
  * @function askNamaUser
  * @returns {void}
@@ -95,7 +95,7 @@ function askNamaUser() {
 }
 
 /**
- * Menampilkan menu utama aplikasi CLI.
+ * Menampilkan menu utama aplikasi CLI
  *
  * @function menuUtama
  * @returns {void}
@@ -117,7 +117,7 @@ export function menuUtama() {
 }
 
 /**
- * Menangani input pilihan menu user.
+ * Menangani input pilihan menu user
  *
  * @function handleMenu
  * @returns {void}
@@ -129,11 +129,11 @@ function handleMenu() {
 }
 
 /**
- * Mengeksekusi pilihan menu user.
+ * Mengeksekusi pilihan menu user
  *
  * @function processMenu
- * @param {string} pilih - Input pilihan menu dari user
- * @returns {void}
+ * @param {string} pilih Input pilihan menu dari user
+ * @returns {void} Menjalankan function sesuai dengan input pilihan user
  */
 function processMenu(pilih) {
   switch (pilih) {
@@ -168,7 +168,7 @@ function processMenu(pilih) {
 }
 
 /**
- * Menampilkan seluruh menu (kopi + dessert).
+ * Menampilkan seluruh menu kopi + dessert
  *
  * @function showAllMenu
  * @returns {void}
@@ -187,10 +187,10 @@ function showAllMenu() {
 }
 
 /**
- * Menutup aplikasi CLI dan keluar dari program.
+ * Menutup aplikasi CLI dan keluar dari program
  *
  * @function exitApp
- * @returns {void}
+ * @returns {void} Menyelesaikan program
  */
 function exitApp() {
   console.clear();

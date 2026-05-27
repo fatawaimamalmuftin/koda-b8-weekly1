@@ -1,5 +1,5 @@
 /**
- * URL endpoint database JSON utama aplikasi.
+ * URL database JSON utama aplikasi
  *
  * @constant {string}
  */
@@ -7,13 +7,13 @@ export const DB_URL =
   "https://raw.githubusercontent.com/fatawaimamalmuftin/db.Weekly1/main/db.json";
 
 /**
- * Mengambil response HTTP dari URL tertentu menggunakan fetch.
+ * Mengambil response dari URL dengan fetch()
  *
- * Default menggunakan DB_URL jika tidak diberikan parameter.
+ * Default menggunakan DB_URL jika tidak diberikan parameter
  *
  * @async
  * @function ambilResponse
- * @param {string} [url=DB_URL] - URL sumber data JSON
+ * @param {string} [url=DB_URL] URL sumber data JSON
  * @returns {Promise<Response>} Response fetch mentah dari server
  */
 export async function ambilResponse(url = DB_URL) {
@@ -21,11 +21,11 @@ export async function ambilResponse(url = DB_URL) {
 }
 
 /**
- * Mengubah Response fetch menjadi JSON object.
+ * Mengubah Response fetch menjadi object dengan JSON()
  *
  * @async
  * @function ambilJson
- * @param {Response} res - Response hasil fetch
+ * @param {Response} res Response hasil fetch
  * @returns {Promise<Object>} Data JSON hasil parsing
  */
 export async function ambilJson(res) {
@@ -33,12 +33,12 @@ export async function ambilJson(res) {
 }
 
 /**
- * Mengambil data JSON dari server dengan error handling.
+ * Mengambil data JSON dari server dengan error handling
  *
  * Flow:
  * - fetch data dari API
  * - parse JSON
- * - jika gagal → return null
+ * - jika gagal return error
  *
  * @async
  * @function getPromise
@@ -49,7 +49,6 @@ export async function getPromise() {
     const res = await ambilResponse();
     return await ambilJson(res);
   } catch (error) {
-    console.log(error);
-    return null;
+    return console.log(error);
   }
 }
